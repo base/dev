@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/flash",
-      "destination": "https://docs.base.org/buildathons/2025-02-ethdenflash",
+      "destination": "https://docs.base.org/buildathons/2025-02-flash",
       "permanent": true
     }
   ]
