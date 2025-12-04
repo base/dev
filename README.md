@@ -14,7 +14,7 @@ A modern, terminal-inspired landing page for Base's development platform built w
 - Animated text scramble effect
 - Quick links to Base resources (blog, careers, X/Twitter)
 - Responsive design with Tailwind CSS
-- Built with Next.js 14 and TypeScript
+- Built with Next.js 15 and TypeScript
 
 ## Getting Started
 
