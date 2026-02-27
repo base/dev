@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
+import type React from 'react'
 import { Command } from 'cmdk'
 
 type Product = {
