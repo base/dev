@@ -39,7 +39,6 @@ const products: Product[] = [
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false)
-  const [selectedIndex, setSelectedIndex] = useState(0)
   const overlayRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -77,32 +76,6 @@ export function CommandPalette() {
     }
   }
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!open) return
-
-      if (e.key === 'ArrowDown') {
-        e.preventDefault()
-        setSelectedIndex(i => i < products.length - 1 ? i + 1 : 0)
-      }
-      
-      if (e.key === 'ArrowUp') {
-        e.preventDefault()
-        setSelectedIndex(i => i > 0 ? i - 1 : products.length - 1)
-      }
-
-      if (e.key === 'Enter') {
-        const selectedProduct = products[selectedIndex]
-        if (selectedProduct?.url) {
-          handleSelect(selectedProduct)
-        }
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [open, selectedIndex])
-
   if (!open) return null
 
   return (
@@ -135,13 +108,11 @@ export function CommandPalette() {
             <Command.Empty className="text-sm text-gray-400 p-2">
               No results found.
             </Command.Empty>
-            {products.map((product, index) => (
+            {products.map((product) => (
               <Command.Item 
                 key={product.name}
                 onSelect={() => handleSelect(product)}
-                className={`flex items-start gap-4 p-3 rounded transition-colors ${
-                  index === selectedIndex ? 'bg-gray-800' : 'hover:bg-gray-800/50'
-                } cursor-pointer ${
+                className={`flex items-start gap-4 p-3 rounded transition-colors data-[selected=true]:bg-gray-800 hover:bg-gray-800/50 cursor-pointer ${
                   product.url ? 'opacity-100' : 'opacity-70'
                 }`}
               >
